@@ -13,7 +13,7 @@ def comparison(images = [], comparison_img = None, name="", algorithm=imagehash.
 	print()
 	print(name)
 
-	modifier = not comparison_img ? 1 : 0
+	modifier = 0 if comparison_img is None else 1
 
 	if len(images) + modifier >= 2:
 		if not comparison_img:

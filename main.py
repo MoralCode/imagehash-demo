@@ -1,11 +1,11 @@
 from PIL import Image
 import imagehash
-img1_path = "../beekeeping mural/IMG_6392.jpg"
-img2_path = "../beekeeping mural/IMG_6394.jpg"
-img3_path = "../beekeeping mural/IMG_6395.jpg"
-br_path = '../bottlerturn6a14cdbb3c24e89c091361341023f440.jpeg'
-realimg_path = "../beekeeping mural/71f42938e5180652b19e2b0d9a36a97c.jpeg"
 
+img1_path = ("geoff beekeeping center", "../beekeeping mural/IMG_6392.jpg")
+img2_path = ("geoff beekeeping right","../beekeeping mural/IMG_6394.jpg")
+img3_path = ("geoff beekeeping left","../beekeeping mural/IMG_6395.jpg")
+br_path = ("bottle return official center", '../bottlerturn6a14cdbb3c24e89c091361341023f440.jpeg')
+realimg_path = ("beekeeping official center", "../beekeeping mural/71f42938e5180652b19e2b0d9a36a97c.jpeg")
 
 def comparison(name="", algorithm=imagehash.average_hash):
 	print()

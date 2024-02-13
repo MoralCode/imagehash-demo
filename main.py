@@ -1,11 +1,26 @@
 from PIL import Image
 import imagehash
+from dataclasses import dataclass, field
 
-img1_path = ("geoff beekeeping center", "../beekeeping mural/IMG_6392.jpg")
-img2_path = ("geoff beekeeping right","../beekeeping mural/IMG_6394.jpg")
-img3_path = ("geoff beekeeping left","../beekeeping mural/IMG_6395.jpg")
-br_path = ("bottle return official center", '../bottlerturn6a14cdbb3c24e89c091361341023f440.jpeg')
-realimg_path = ("beekeeping official center", "../beekeeping mural/71f42938e5180652b19e2b0d9a36a97c.jpeg")
+img1_path = HashedImage("geoff beekeeping center", "../beekeeping mural/IMG_6392.jpg")
+img2_path = HashedImage("geoff beekeeping right","../beekeeping mural/IMG_6394.jpg")
+img3_path = HashedImage("geoff beekeeping left","../beekeeping mural/IMG_6395.jpg")
+br_path = HashedImage("bottle return official center", '../bottlerturn6a14cdbb3c24e89c091361341023f440.jpeg')
+realimg_path = HashedImage("beekeeping official center", "../beekeeping mural/71f42938e5180652b19e2b0d9a36a97c.jpeg")
+
+
+@dataclass
+class HashedImage:
+	name:str
+	path: str
+	hashes = field(default_factory=dict, init=False, compare=False)
+
+	def hash(self, algorithm=imagehash.average_hash):
+		cached_hash = self.hashes.get(algorithm.__name__)
+		if not cached_hash:
+			self.hashes[algorithm.__name__] = algorithm(Image.open(self.path))
+			return self.hashes.get(algorithm.__name__)
+		return cached_hash
 
 
 def comparison(images = [], comparison_img = None, name="", algorithm=imagehash.average_hash):

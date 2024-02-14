@@ -40,30 +40,13 @@ def comparison(images = [], comparison_img = None, name="", algorithm=imagehash.
 			comparison_img = images[0]
 			images = images[1:]
 		
-		hash_real = algorithm(Image.open(realimg_path))
-		hash1 = algorithm(Image.open(img1_path))
-		hash2 = algorithm(Image.open(img2_path))
-		hash3 = algorithm(Image.open(img3_path))
-		br_hash = algorithm(Image.open(br_path))
+		cmp_hash = comparison_img.hash(algorithm=algorithm)
 
-		print(f"real: {hash_real}")
-		print(f"1: {hash1}")
-		print(f"2: {hash2}")
-		print(f"3: {hash3}")
-		print(f"br: {br_hash}")
+		for image in images:
+			img_hash = image.hash(algorithm=algorithm)
+			
+			print(f"[{cmp_hash-img_hash}] {image.name}: {img_hash}")
 
-		#ffd7918181c9ffff
-		print(hash_real)
-		#9f172786e71f1e00
-		# print(hash == otherhash)
-		# #False
-		print(hash_real - hash1)  # hamming distance
-		#33
-
-		print(hash_real - hash2)  # hamming distance
-
-		print(hash_real - hash3)  # hamming distance
-		print(hash_real - br_hash)  # hamming distance
 	else:
 		print("not enough images supplied, need at least 2")
 

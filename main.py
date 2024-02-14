@@ -66,7 +66,8 @@ def comparison(images = [], comparison_img = None, name="", algorithms=[imagehas
 		print("not enough images supplied, need at least 2")
 
 
-comparison(images, name="default")
-comparison(images, name="perceptual", algorithms=[imagehash.phash])
-comparison(images, name="color", algorithms=[imagehash.colorhash])
-comparison(images, name="difference", algorithms=[imagehash.dhash])
+# comparison(images, name="default")
+# comparison(images, name="perceptual", algorithms=[imagehash.phash])
+# comparison(images, name="color", algorithms=[imagehash.colorhash])
+# comparison(images, name="difference", algorithms=[imagehash.dhash])
+comparison(images, name="all", algorithms=[imagehash.average_hash,imagehash.phash,imagehash.colorhash,imagehash.dhash])

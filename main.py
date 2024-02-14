@@ -76,9 +76,9 @@ if __name__ == "__main__":
 			filepath = row['filepath']
 			images.append(HashedImage(name, filepath))
 
-	comparison(images, comparison_img=realimg, name="all algorithms", algorithms=[imagehash.average_hash,imagehash.phash,imagehash.colorhash,imagehash.dhash])
+	comparison(images, name="all algorithms", algorithms=[imagehash.average_hash,imagehash.phash,imagehash.colorhash,imagehash.dhash])
 
-	comparison(images, comparison_img=realimg, name="average alg")
-	comparison(images, comparison_img=realimg, name="perceptual", algorithms=[imagehash.phash])
-	comparison(images, comparison_img=realimg, name="color", algorithms=[imagehash.colorhash])
-	comparison(images, comparison_img=realimg, name="difference", algorithms=[imagehash.dhash])
+	comparison(images, name="average alg")
+	comparison(images, name="perceptual", algorithms=[imagehash.phash])
+	comparison(images, name="color", algorithms=[imagehash.colorhash])
+	comparison(images, name="difference", algorithms=[imagehash.dhash])

@@ -38,7 +38,7 @@ br = HashedImage("bottle return official center", '../bottlerturn6a14cdbb3c24e89
 realimg = HashedImage("beekeeping official center", "../beekeeping mural/71f42938e5180652b19e2b0d9a36a97c.jpeg")
 
 images = [
-	img1, img2, img3, br, realimg
+	img1, img2, img3, br
 ]
 
 
@@ -70,4 +70,4 @@ def comparison(images = [], comparison_img = None, name="", algorithms=[imagehas
 # comparison(images, name="perceptual", algorithms=[imagehash.phash])
 # comparison(images, name="color", algorithms=[imagehash.colorhash])
 # comparison(images, name="difference", algorithms=[imagehash.dhash])
-comparison(images, name="all", algorithms=[imagehash.average_hash,imagehash.phash,imagehash.colorhash,imagehash.dhash])
+comparison(images,  comparison_img=realimg, name="all", algorithms=[imagehash.average_hash,imagehash.phash,imagehash.colorhash,imagehash.dhash])

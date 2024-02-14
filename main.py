@@ -43,7 +43,7 @@ images = [
 
 
 
-def comparison(images = [], comparison_img = None, name="", algorithms=[imagehash.average_hash]):
+def comparison(images = [], comparison_img = None, name="", algorithms=[imagehash.average_hash], include_comparison=False):
 	
 	print()
 	print(name)
@@ -55,6 +55,8 @@ def comparison(images = [], comparison_img = None, name="", algorithms=[imagehas
 			comparison_img = images[0]
 			images = images[1:]
 		
+		if include_comparison:
+			images.append(comparison_img)
 
 		for image in images:
 			

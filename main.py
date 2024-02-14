@@ -43,7 +43,7 @@ images = [
 
 
 
-def comparison(images = [], comparison_img = None, name="", algorithm=imagehash.average_hash):
+def comparison(images = [], comparison_img = None, name="", algorithms=[imagehash.average_hash]):
 	
 	print()
 	print(name)
@@ -55,18 +55,16 @@ def comparison(images = [], comparison_img = None, name="", algorithm=imagehash.
 			comparison_img = images[0]
 			images = images[1:]
 		
-		cmp_hash = comparison_img.hash(algorithm=algorithm)
 
 		for image in images:
-			img_hash = image.hash(algorithm=algorithm)
 			
-			print(f"[{image.hamming(comparison_img, algorithms=[algorithm])}] {image.name}: {img_hash}")
+			print(f"[{image.hamming(comparison_img, algorithms=algorithms)}] {image.name}")
 
 	else:
 		print("not enough images supplied, need at least 2")
 
 
 comparison(images, name="default")
-comparison(images, name="perceptual", algorithm=imagehash.phash)
-comparison(images, name="color", algorithm=imagehash.colorhash)
-comparison(images, name="difference", algorithm=imagehash.dhash)
+comparison(images, name="perceptual", algorithms=[imagehash.phash])
+comparison(images, name="color", algorithms=[imagehash.colorhash])
+comparison(images, name="difference", algorithms=[imagehash.dhash])

@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 class HashedImage:
 	name:str
 	path: str
-	hashes = field(default_factory=dict, init=False, compare=False)
+	hashes:dict = field(default_factory=dict, init=False, compare=False)
 
 	def hash(self, algorithm=imagehash.average_hash):
 		cached_hash = self.hashes.get(algorithm.__name__)

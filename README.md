@@ -12,10 +12,10 @@ Names help the output be more understandable
 
 ### Command-line Arguments
 
-- `csv_file`: The path to the CSV file containing "name" and "filepath" columns.
+- `csv_file`: The path to the CSV file containing "name" and "filepath" columns. Optional and defaults to `input.csv`
 
 ### Example
 
 ```bash
-pipenv run python3 main.py input_data.csv
+pipenv run python3 main.py input.csv
 ```

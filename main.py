@@ -62,7 +62,7 @@ def comparison(images = [], comparison_img = None, name="", algorithms=[imagehas
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Read CSV and run difference analysis.')
-	parser.add_argument('csv_file', help='Path to the CSV file containing names for each image and their file path', default="input.csv")
+	parser.add_argument('--csv_file', help='Path to the CSV file containing names for each image and their file path', default="input.csv")
 
 	args = parser.parse_args()
 	csv_file_path = args.csv_file

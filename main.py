@@ -15,6 +15,21 @@ class HashedImage:
 			return self.hashes.get(algorithm.__name__)
 		return cached_hash
 
+	def hamming(self, other, algorithms=[]):
+		hamming = 0
+
+		if len(algorithms) == 0:
+			print("No Algorithm Supplied")
+			return
+		else:
+			for algorithm in algorithms:
+				# ensure both images have bene hashed with that algorithm
+				self.hash(algorithm=algorithm)
+				other.hash(algorithm=algorithm)
+				# add the hamming distance to the total
+				hamming += self.hashes.get(algorithm.__name__)-other.hashes.get(algorithm.__name__)
+			return hamming
+
 
 img1_path = HashedImage("geoff beekeeping center", "../beekeeping mural/IMG_6392.jpg")
 img2_path = HashedImage("geoff beekeeping right","../beekeeping mural/IMG_6394.jpg")
@@ -45,7 +60,7 @@ def comparison(images = [], comparison_img = None, name="", algorithm=imagehash.
 		for image in images:
 			img_hash = image.hash(algorithm=algorithm)
 			
-			print(f"[{cmp_hash-img_hash}] {image.name}: {img_hash}")
+			print(f"[{image.hamming(comparison_img, algorithms=[algorithm])}] {image.name}: {img_hash}")
 
 	else:
 		print("not enough images supplied, need at least 2")
